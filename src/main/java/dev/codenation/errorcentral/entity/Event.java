@@ -22,31 +22,33 @@ public class Event {
     private Long id;
 
     @Enumerated(EnumType.STRING)
+    @NotNull
+    @NotBlank(message = "Event level is required")
     private Level level;
 
     @Column
     @NotNull
-    @NotBlank
+    @NotBlank(message = "Event description is required")
     private String description;
 
     @Column
     @NotNull
-    @NotBlank
+    @NotBlank(message = "Event log is required")
     private String log;
 
     @Column
     @NotNull
-    @NotBlank
+    @NotBlank(message = "Source of event is required")
     @Size(max = 100)
     private String source;
 
     @Temporal(TemporalType.DATE)
     @NotNull
-    @NotBlank
+    @NotBlank(message = "Event date is required")
     private Date date;
 
     @Column
     @NotNull
-    @NotBlank
-    private Integer amount;
+    @NotBlank(message = "Quantity of same event is required")
+    private Integer quantity;
 }
