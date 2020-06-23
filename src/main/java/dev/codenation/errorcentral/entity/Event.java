@@ -2,6 +2,7 @@ package dev.codenation.errorcentral.entity;
 
 import dev.codenation.errorcentral.enums.Level;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.util.Date;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "events")
 public class Event {
 
