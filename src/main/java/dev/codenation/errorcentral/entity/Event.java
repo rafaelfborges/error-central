@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -50,7 +51,7 @@ public class Event {
     private Date date;
 
     @Column
-    @NotNull
+    @Min(value = 0)
     @NotBlank(message = "Quantity of same event is required")
     private Integer quantity;
 }
