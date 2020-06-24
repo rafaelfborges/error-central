@@ -5,10 +5,13 @@ import dev.codenation.errorcentral.entity.Event;
 import dev.codenation.errorcentral.exceptions.ResourceNotFoundException;
 import dev.codenation.errorcentral.mappers.EventMapper;
 import dev.codenation.errorcentral.service.impl.EventService;
-import lombok.AllArgsConstructor;
+
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import lombok.AllArgsConstructor;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -27,8 +30,8 @@ public class EventController {
     }
 
     @GetMapping
-    public List<EventDTO> findAll() {
-        return eventMapper.map(eventService.findAll());
+    public List<EventDTO> findAll(Pageable pageable) {
+        return eventMapper.map(eventService.findAll(pageable));
     }
 
     @GetMapping("/{id}")

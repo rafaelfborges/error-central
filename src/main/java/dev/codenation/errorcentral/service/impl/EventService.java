@@ -3,6 +3,7 @@ package dev.codenation.errorcentral.service.impl;
 import dev.codenation.errorcentral.entity.Event;
 import dev.codenation.errorcentral.repository.EventRepository;
 import dev.codenation.errorcentral.service.interfaces.EventServiceInterface;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,8 +24,8 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public List<Event> findAll() {
-        return eventRepository.findAll();
+    public List<Event> findAll(Pageable pageable) {
+        return eventRepository.findAll(pageable).getContent();
     }
 
     @Override
