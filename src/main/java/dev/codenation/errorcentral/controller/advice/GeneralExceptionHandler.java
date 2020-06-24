@@ -16,7 +16,8 @@ public class GeneralExceptionHandler {
     @ResponseBody
     public String handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
 
-        return ex.getBindingResult().getFieldError().getField() + " - " + ex.getBindingResult().getFieldError().getDefaultMessage();
+        return "O campo " + ex.getBindingResult().getFieldError().getField() + ", "
+                          + ex.getBindingResult().getFieldError().getDefaultMessage() + ".";
     }
 
     @ExceptionHandler(Exception.class)
