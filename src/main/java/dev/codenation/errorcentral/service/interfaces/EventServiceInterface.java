@@ -10,4 +10,6 @@ public interface EventServiceInterface extends ServiceInterface<Event> {
     Optional<Event> findById(Long id);
 
     List<Event> findAll();
+
+    Event save(Event event);
 }
