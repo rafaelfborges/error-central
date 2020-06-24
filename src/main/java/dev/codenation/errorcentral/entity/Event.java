@@ -5,6 +5,7 @@ import dev.codenation.errorcentral.enums.Level;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -43,8 +44,8 @@ public class Event {
     @Size(max = 100)
     private String source;
 
-    @Temporal(TemporalType.DATE)
-    @NotNull
+    @Column(nullable = false)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date date;
 
     @Column
