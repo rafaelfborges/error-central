@@ -23,6 +23,11 @@ public class EventService implements EventServiceInterface {
     private final EventMapper eventMapper;
 
     @Override
+    public Event save(Event event) {
+        return eventRepository.save(event);
+    }
+
+    @Override
     public Optional<Event> findById(Long id) {
         return eventRepository.findById(id);
     }
@@ -64,7 +69,7 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public Event save(Event event) {
-        return eventRepository.save(event);
+    public void deleteById(Long id) {
+        eventRepository.deleteById(id);
     }
 }

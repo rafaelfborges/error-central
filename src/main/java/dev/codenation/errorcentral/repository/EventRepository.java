@@ -21,4 +21,5 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     Page<Event> findByDate(Date date, Pageable pageable);
 
     Page<Event> findByQuantity(Integer quantity, Pageable pageable);
+
 }

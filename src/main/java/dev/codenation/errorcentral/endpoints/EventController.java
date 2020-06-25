@@ -49,21 +49,26 @@ public class EventController {
             @Parameter(hidden = true) @PageableDefault(size = 5, page = 0, sort = "id") Pageable pageable) {
 
         if(level != null)
-            return eventService.findByLevel(level, pageable);
+            return this.eventService.findByLevel(level, pageable);
         if(description != null)
-            return eventService.findByDescription(description, pageable);
+            return this.eventService.findByDescription(description, pageable);
         if(source != null)
-            return eventService.findBySource(source, pageable);
+            return this.eventService.findBySource(source, pageable);
         if(date != null)
-            return eventService.findByDate(date, pageable);
+            return this.eventService.findByDate(date, pageable);
         if(quantity != null)
-            return eventService.findByQuantity(quantity, pageable);
+            return this.eventService.findByQuantity(quantity, pageable);
 
-        return eventService.findAll(pageable);
+        return this.eventService.findAll(pageable);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Event> findById(@PathVariable Long id) {
         return ResponseEntity.ok(eventService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Event")));
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        this.eventService.deleteById(id);
     }
 }
