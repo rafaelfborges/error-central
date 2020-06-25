@@ -46,7 +46,7 @@ public class EventController {
             @RequestParam(value = "source", required = false) String source,
             @RequestParam(value = "date", required = false) Date date,
             @RequestParam(value = "quantity", required = false) Integer quantity,
-            @Parameter(hidden = true) @PageableDefault(size = 5, page = 0, sort = "id") Pageable pageable) {
+            @Parameter(hidden = true) @PageableDefault(page = 0, sort = "id") Pageable pageable) {
 
         if(level != null)
             return this.eventService.findByLevel(level, pageable);

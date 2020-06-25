@@ -13,6 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EventDTO {
+    private Long id;
     private Level level;
     private String description;
     private String source;

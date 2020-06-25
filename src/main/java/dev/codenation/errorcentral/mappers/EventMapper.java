@@ -12,6 +12,7 @@ import java.util.List;
 public interface EventMapper {
 
     @Mappings({
+            @Mapping(source = "id", target = "id"),
             @Mapping(source = "level", target = "level"),
             @Mapping(source = "description", target = "description"),
             @Mapping(source = "source", target = "source"),

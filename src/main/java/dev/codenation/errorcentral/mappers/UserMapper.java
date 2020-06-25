@@ -11,6 +11,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface UserMapper {
     @Mappings({
+            @Mapping(source = "id", target = "id"),
             @Mapping(source = "fullName", target = "fullName"),
             @Mapping(source = "email", target = "email"),
             @Mapping(source = "password", target = "password"),
