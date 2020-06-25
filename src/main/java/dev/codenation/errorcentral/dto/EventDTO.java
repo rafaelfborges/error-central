@@ -1,5 +1,6 @@
 package dev.codenation.errorcentral.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import dev.codenation.errorcentral.enums.Level;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,6 +18,9 @@ public class EventDTO {
     private Level level;
     private String description;
     private String source;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date date;
+
     private Integer quantity;
 }

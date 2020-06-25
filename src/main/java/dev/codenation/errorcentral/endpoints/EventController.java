@@ -31,22 +31,23 @@ public class EventController {
 
     private final EventService eventService;
 
+    @Operation(description = "Cria um novo evento")
+    @ApiResponse(description = "Success", responseCode = "201", content = @Content(mediaType = "application/json"))
     @PostMapping
     public ResponseEntity<Event> create(@Valid @RequestBody Event event) {
         return new ResponseEntity<>(this.eventService.save(event), HttpStatus.CREATED);
     }
 
     @GetMapping
+    @Operation(description = "Lista todos os eventos")
     @PageableAsQueryParam
-    @Operation(description = "Buscar todos os eventos")
     @ApiResponse(description = "Success", responseCode = "200", content = @Content(mediaType = "application/json"))
     public Page<EventDTO> findAll(
             @RequestParam(value = "level", required = false) Level level,
             @RequestParam(value = "description", required = false) String description,
             @RequestParam(value = "source", required = false) String source,
-            @RequestParam(value = "date", required = false) Date date,
             @RequestParam(value = "quantity", required = false) Integer quantity,
-            @Parameter(hidden = true) @PageableDefault(page = 0, sort = "id") Pageable pageable) {
+            @Parameter(hidden = true) @PageableDefault(page = 0, size = 5, sort = "id") Pageable pageable) {
 
         if(level != null)
             return this.eventService.findByLevel(level, pageable);
@@ -54,19 +55,20 @@ public class EventController {
             return this.eventService.findByDescription(description, pageable);
         if(source != null)
             return this.eventService.findBySource(source, pageable);
-        if(date != null)
-            return this.eventService.findByDate(date, pageable);
         if(quantity != null)
             return this.eventService.findByQuantity(quantity, pageable);
 
         return this.eventService.findAll(pageable);
     }
 
+    @Operation(description = "Lista um evento por id")
+    @ApiResponse(description = "Success", responseCode = "200", content = @Content(mediaType = "application/json"))
     @GetMapping("/{id}")
     public ResponseEntity<Event> findById(@PathVariable Long id) {
         return ResponseEntity.ok(eventService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Event")));
     }
 
+    @Operation(description = "Deleta um evento por id")
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         this.eventService.deleteById(id);

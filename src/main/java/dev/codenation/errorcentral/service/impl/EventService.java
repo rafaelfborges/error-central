@@ -12,7 +12,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -53,12 +52,6 @@ public class EventService implements EventServiceInterface {
     @Override
     public Page<EventDTO> findBySource(String source, Pageable pageable) {
         Page<Event> events = eventRepository.findBySourceContainsIgnoreCase(source, pageable);
-        return new PageImpl<>(eventMapper.map(events.getContent()), events.getPageable(), events.getTotalElements());
-    }
-
-    @Override
-    public Page<EventDTO> findByDate(Date date, Pageable pageable) {
-        Page<Event> events = eventRepository.findByDate(date, pageable);
         return new PageImpl<>(eventMapper.map(events.getContent()), events.getPageable(), events.getTotalElements());
     }
 
