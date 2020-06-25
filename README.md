@@ -36,3 +36,4 @@ Abaixo estão os requisitos desta API, o time terá total liberdade para tomar a
 - Lombok
 - MapStruct
 - Swagger v3 (SpringDoc OpenApi)
+- Deploy no Heroku
