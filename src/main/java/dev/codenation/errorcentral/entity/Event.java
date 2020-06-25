@@ -2,10 +2,13 @@ package dev.codenation.errorcentral.entity;
 
 import dev.codenation.errorcentral.enums.Level;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -14,6 +17,7 @@ import java.util.Date;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "events")
 public class Event {
 
@@ -22,11 +26,11 @@ public class Event {
     private Long id;
 
     @Enumerated(EnumType.STRING)
+    @NotNull
     private Level level;
 
     @Column
     @NotNull
-    @NotBlank
     private String description;
 
     @Column
@@ -40,13 +44,12 @@ public class Event {
     @Size(max = 100)
     private String source;
 
-    @Temporal(TemporalType.DATE)
-    @NotNull
-    @NotBlank
+    @Column(nullable = false)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date date;
 
     @Column
+    @Min(value = 0)
     @NotNull
-    @NotBlank
-    private Integer amount;
+    private Integer quantity;
 }
