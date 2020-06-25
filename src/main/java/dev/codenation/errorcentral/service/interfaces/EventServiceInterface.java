@@ -12,6 +12,8 @@ import java.util.Optional;
 
 public interface EventServiceInterface extends ServiceInterface<Event> {
 
+    Event save(Event event);
+
     Page<EventDTO> findAll(Pageable pageable);
 
     Page<EventDTO> findByLevel(Level level, Pageable pageable);
@@ -26,5 +28,5 @@ public interface EventServiceInterface extends ServiceInterface<Event> {
 
     Optional<Event> findById(Long id);
 
-    Event save(Event event);
+    void deleteById(Long id);
 }
