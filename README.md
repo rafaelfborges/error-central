@@ -28,6 +28,7 @@ Abaixo estão os requisitos desta API, o time terá total liberdade para tomar a
 - Foco na entrega das funcionalidades de maneira mais simples possível.
 - Decidi não utilizar testes de unidade, dado tempo limitado.
 - Utilização de banco de dados relacional em memória.
+- Todo o backend foi escrito em inglês, incluindo os commits no git.
 
 #### Tecnologias utilizadas
 - Ecossistema Spring Boot 2.3.1: Data JPA, Web, Security e Validation
